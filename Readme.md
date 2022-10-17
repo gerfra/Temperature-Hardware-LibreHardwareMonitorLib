@@ -1,5 +1,5 @@
-# FRANCESCO GERRATANA 2022 | Use OpenHardwareMonitorLib  to read Temperature sensors
-============
+Use OpenHardwareMonitorLib  to read Temperature sensors
+
 
 This is an example of the versatility of the python language. In this case I use it to access Hardware sensors to read their temperature using the OpenHarwareMonitorLib .dll library and the python library pythonnet.
 
