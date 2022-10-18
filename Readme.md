@@ -3,7 +3,7 @@ Use LibreHardwareMonitorLib  to read Temperature sensors
 
 This is an example of the versatility of the python language. In this case I use it to access Hardware sensors to read their temperature using the LibreHardwareMonitorLib .dll library and the python library pythonnet.
 
-![Temperature Preview](https://i.imgur.com/xsIXgn3.png)
+![Temperature Preview](https://i.imgur.com/pVN9KrX.png)
 
 ---
 ## Buy me a coffee
