@@ -20,12 +20,17 @@ DONATE</a>
 
 ---
 
-## requirements
+## Requirements
 - python 3
 - pythonnet 3.0.0.post1 lib
 - os lib
 - OpenHardwareMonitorLib.dll [here](https://openhardwaremonitor.org/)
 
+---
+
+## Usage
+ This script requires admin privileges to run
+ 
 ---
 
 ## License
