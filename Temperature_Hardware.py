@@ -1,6 +1,7 @@
-# FRANCESCO GERRATANA 2022 | Use OpenHardwareMonitorLib  to read Temperature sensors
+# FRANCESCO GERRATANA 2022 | Use OpenHardwareMonitorLib to read Temperature sensors
 import clr
 import os
+from tabulate import tabulate
 
 
 def init_openhardwaremonitor():
@@ -19,34 +20,27 @@ def init_openhardwaremonitor():
     handle.CPUEnabled = True
     handle.RAMEnabled = True
     handle.GPUEnabled = True
-    handle.HDDEnabled = True
-    handle.FanControllerEnabled = True
+    handle.HDDEnabled = True #<--- if enabled GPU Temp Lost
 
     handle.Open()
 
     return handle
 
 
-def catch_temp_sensor(sensor):
-    if sensor.Value is not None:
-
-        if str(sensor.SensorType) == str('Temperature'):
-            print(" ", sensor.Hardware.HardwareType, sensor.Hardware.Name, sensor.Index, sensor.Name, sensor.Value,
-                  sensor.Identifier)
-
-
 def scan_hardware(handle):
-    print("\n FRANCESCO GERRATANA 2022 | Use OpenHardwareMonitorLib  to read Temperature sensors \n \n Mainboard ",
-          handle.Hardware[0].Name, "\n")
-
+    headers = ["Hardware Name","Temperature","Identifier"] 
+    hw = [] 
+    print("\n FRANCESCO GERRATANA 2022 | Use OpenHardwareMonitorLib  to read Temperature sensors","\n")
+    hw.append([str(handle.Hardware[0].Name),"",""]) 
     for i in handle.Hardware:
         i.Update()
-        #print('Debug', i.HardwareType, i.Name)
-        for sensor in i.Sensors:
-            catch_temp_sensor(sensor)
-            #print('-Debug', sensor.Name, sensor.Value, sensor.Identifier)
-
+        for sensor in i.Sensors: 
+            if str(sensor.SensorType) == str('Temperature'):
+                hw.append([str(sensor.Hardware.Name +' '+ sensor.Name),str(sensor.Value),str(sensor.Identifier)]) 
     handle.Close()
+    table = tabulate(hw, headers, tablefmt="fancy_grid")
+
+    print(table)
 
 
 if __name__ == "__main__":
