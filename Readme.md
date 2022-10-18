@@ -1,7 +1,7 @@
-Use OpenHardwareMonitorLib  to read Temperature sensors
+Use LibreHardwareMonitorLib  to read Temperature sensors
 
 
-This is an example of the versatility of the python language. In this case I use it to access Hardware sensors to read their temperature using the OpenHarwareMonitorLib .dll library and the python library pythonnet.
+This is an example of the versatility of the python language. In this case I use it to access Hardware sensors to read their temperature using the LibreHardwareMonitorLib .dll library and the python library pythonnet.
 
 ![Temperature Preview](https://i.imgur.com/xsIXgn3.png)
 
@@ -25,19 +25,14 @@ DONATE</a>
 - pythonnet 3.0.0.post1 lib
 - tabulate
 - os lib
-- OpenHardwareMonitorLib.dll [here](https://openhardwaremonitor.org/)
+- LibreHardwareMonitorLib.dll [here](https://github.com/LibreHardwareMonitor/LibreHardwareMonitor)
+- HidSharp.dll
 
 ---
 
 ## Usage
  This script requires admin privileges to run
 
----
-
-## Issues 
-
-If you set handle.HDDEnabled = True, the GPU temperature may not work!
- 
 ---
 
 ## License
