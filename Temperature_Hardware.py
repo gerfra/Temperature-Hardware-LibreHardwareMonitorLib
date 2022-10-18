@@ -1,26 +1,29 @@
-# FRANCESCO GERRATANA 2022 | Use OpenHardwareMonitorLib to read Temperature sensors
+# FRANCESCO GERRATANA 2022 | Use LibreHardwareMonitorLib to read Temperature sensors
 import clr
 import os
 from tabulate import tabulate
 
 
-def init_openhardwaremonitor():
+def init_librehardwaremonitor():
     # Without path dll
     # noinspection PyUnresolvedReferences
-    # clr.AddReference('OpenHardwareMonitorLib')
+    # clr.AddReference('LibreHardwareMonitorLib')
 
     # Use path dll
     cwd = os.getcwd()
-    clr.AddReference(cwd + '\\OpenHardwareMonitorLib.dll')
+    clr.AddReference(cwd + '\\LibreHardwareMonitorLib.dll')
+    clr.AddReference(cwd + '\\HidSharp.dll')
 
-    from OpenHardwareMonitor import Hardware
+    from LibreHardwareMonitor import Hardware
 
     handle = Hardware.Computer()
-    handle.MainboardEnabled = True
-    handle.CPUEnabled = True
-    handle.RAMEnabled = True
-    handle.GPUEnabled = True
-    handle.HDDEnabled = True #<--- if enabled GPU Temp Lost
+    handle.IsCpuEnabled = True
+    handle.IsGpuEnabled = True
+    handle.IsMemoryEnabled = True
+    handle.IsMotherboardEnabled = True
+    handle.IsControllerEnabled = True
+    handle.IsNetworkEnabled = True
+    handle.IsStorageEnabled = True
 
     handle.Open()
 
@@ -30,7 +33,7 @@ def init_openhardwaremonitor():
 def scan_hardware(handle):
     headers = ["Hardware Name","Temperature","Identifier"] 
     hw = [] 
-    print("\n FRANCESCO GERRATANA 2022 | Use OpenHardwareMonitorLib  to read Temperature sensors","\n")
+    print("\n FRANCESCO GERRATANA 2022 | Use LibreHardwareMonitorLib  to read Temperature sensors","\n")
     hw.append([str(handle.Hardware[0].Name),"",""]) 
     for i in handle.Hardware:
         i.Update()
@@ -44,4 +47,4 @@ def scan_hardware(handle):
 
 
 if __name__ == "__main__":
-    scan_hardware(init_openhardwaremonitor())
+    scan_hardware(init_librehardwaremonitor())
